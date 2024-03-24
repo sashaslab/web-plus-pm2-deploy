@@ -18,7 +18,7 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      'pre-deploy': `rsync -av ./*.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
+      'pre-deploy': `rsync --no-strict-host-key-checking -av ./*.env sashaslab@178.154.201.109:/home/sashaslab/web-plus-pm2-deploy`,
       'post-deploy': 'npm i && npm run build',
     },
   },
