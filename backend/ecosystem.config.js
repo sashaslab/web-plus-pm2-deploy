@@ -18,8 +18,8 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      'pre-deploy': `RSYNC_RSH='ssh -o "StrictHostKeyChecking=no"' rsync -av ./*.env sashaslab@178.154.201.109:/home/sashaslab/web-plus-pm2-deploy`,
-      'post-deploy': 'npm i && npm run build',
+      'pre-deploy': `scp .env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/current/backend`,
+      'post-deploy': 'cd web-plus-pm2-deploy/current/backend && npm i && npm run build',
     },
   },
 };
