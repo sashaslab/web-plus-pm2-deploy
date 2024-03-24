@@ -18,8 +18,8 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      'pre-deploy-local': `scp .env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/current/backend`,
-      'post-deploy': `cd ${DEPLOY_PATH}/current/backend && npm i && npm run build`,
+      'pre-deploy-local': `scp .env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
+      'post-deploy': `cd ${DEPLOY_PATH}/current/backend && /home/sashaslab/.nvm/versions/node/v20.10.0/bin/npm install && /home/sashaslab/.nvm/versions/node/v20.10.0/bin/npm run build && pm2 reload ecosystem.config.js --env production`,
     },
   },
 };
